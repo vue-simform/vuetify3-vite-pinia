@@ -1,6 +1,19 @@
-https://camo.githubusercontent.com/d696856ecd35d688a09d42f567118152be119e5367f657bb0549af98dc4e98b8/68747470733a2f2f7777772e73696d666f726d2e636f6d2f77702d636f6e74656e742f75706c6f6164732f323032322f31322f6c6f676f2e737667
+![Logo](https://www.simform.com/wp-content/uploads/2022/12/logo.svg)
+
+# Vue 3 + Vuetify 3 + Vite + Pinia Boilerplate
+
+The stack of this boilerplate is focused on web app front end, therefore I’ll keep it simple and mainly focuses on following technologies - Vue 3, Vuetify 3, Vite, Pinia
+
+## Tech Stack
+
+**Client:** [Vue3](https://vuejs.org/), [Javascript](https://www.javascript.com/), [Vite](https://vitejs.dev/), [Vuetify3 graphql](https://vuetifyjs.com/en/),  [Vue router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/)
+
+**Code Formatter** [Eslint](https://eslint.org/)
+
+## Demo
 
 Demo - https://6476cdb27536585724735df7--funny-moonbeam-1a79ab.netlify.app/
+
 ## Project setup
 
 ```
