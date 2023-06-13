@@ -39,6 +39,12 @@ copy `.env.example` to `.env`. update `.env` file variables. make sure in this p
 
 run `npm run dev` command to start development server.
 
+### Other useful scripts
+
+- `npm run build` to build a project
+- `npm run preview` to run build preview
+- `npm run lint` to check linting issues
+- `npm run lint:fix` to fix linting issues
 
 ## Demo
 
