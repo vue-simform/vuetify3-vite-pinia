@@ -2,13 +2,43 @@
 
 # Vue 3 + Vuetify 3 + Vite + Pinia Boilerplate
 
+This boilerplate is starting point of any project that uses Vuetify, Pinia and Vite with all batteries included. you can directly start development without spending time on project setup.
+
 The stack of this boilerplate is focused on web app front end, therefore I’ll keep it simple and mainly focuses on following technologies - Vue 3, Vuetify 3, Vite, Pinia
+
+# Things to update before start
+
+- update readme file to remove/add project related documenation.
+- update `name` key in `package.json` file
+- update git remote using `git remote set-url origin new.git.url/here` command
+- [Demo](#demo) section from this file
+- remove unnecessary files.
 
 ## Tech Stack
 
 **Client:** [Vue3](https://vuejs.org/), [Javascript](https://www.javascript.com/), [Vite](https://vitejs.dev/), [Vuetify3 graphql](https://vuetifyjs.com/en/),  [Vue router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/)
 
 **Code Formatter** [Eslint](https://eslint.org/)
+
+## Documentation
+
+### Project Setup
+
+`Clone URL : https://github.com/trishant-kumar/vuetify3-boilerplate.git`
+
+Clone repo using HTTP or SSH method.
+
+To use SSH method, please [Follow this tutorial](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+
+To use HTTP method, developer has to pass username in git clone url like this `https://{username}@github.com:trishant-kumar/vuetify3-boilerplate.git`
+It will promte for application password that you can generate from [here](https://github.com/settings/tokens)
+
+run `npm i` command
+
+copy `.env.example` to `.env`. update `.env` file variables. make sure in this process you don't rename/delete `.env.example` file.
+
+run `npm run dev` command to start development server.
+
 
 ## Demo
 
