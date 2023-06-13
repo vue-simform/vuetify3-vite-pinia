@@ -16,7 +16,7 @@ The stack of this boilerplate is focused on web app front end, therefore I’ll 
 
 ## Tech Stack
 
-**Client:** [Vue3](https://vuejs.org/), [Javascript](https://www.javascript.com/), [Vite](https://vitejs.dev/), [Vuetify3 graphql](https://vuetifyjs.com/en/),  [Vue router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/)
+**Client:** [Vue3](https://vuejs.org/), [Javascript](https://www.javascript.com/), [Vite](https://vitejs.dev/), [Vuetify3](https://vuetifyjs.com/en/),  [Vue router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/)
 
 **Code Formatter** [Eslint](https://eslint.org/)
 
