@@ -1,4 +1,4 @@
-// Composables
+// This file contains the route directory of Application, you can update your routes here.
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
