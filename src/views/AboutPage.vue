@@ -12,18 +12,22 @@
       <li>Delete a task</li>
       <li>Sort list</li>
     </ul>
-    <v-divider></v-divider>
+    <v-divider />
 
-    <br />
+    <br>
     <h4>Any help will be welcome. Thanks!</h4>
     <v-list dense>
       <v-list-item-group color="primary">
-        <v-list-item v-for="network in networks" :key="network.id" @click="goTo(network.link)">
+        <v-list-item
+          v-for="network in networks"
+          :key="network.id"
+          @click="goTo(network.link)"
+        >
           <v-list-item-icon>
-            <v-icon v-text="`mdi-${network.icon}`"></v-icon>
+            <v-icon v-bind="`mdi-${network.icon}`" />
           </v-list-item-icon>
           <v-list-item>
-            <v-list-item-title v-text="network.name"></v-list-item-title>
+            <v-list-item-title v-bind="network.name" />
           </v-list-item>
         </v-list-item>
       </v-list-item-group>

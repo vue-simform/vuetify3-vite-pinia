@@ -1,61 +1,165 @@
 <template>
   <div class="todo px-6">
     <!-- Text field to input a new task -->
-    <v-text-field outlined label="Add task" clearable hide-details v-model="newTaskTitle" @click:append="addTask" @keyup.enter="addTask" append-icon="mdi-plus-circle" class="mb-6"></v-text-field>
+    <v-text-field
+      v-model="newTaskTitle"
+      outlined
+      label="Add task"
+      clearable
+      hide-details
+      append-icon="mdi-plus-circle"
+      class="mb-6"
+      @click:append="addTask"
+      @keyup.enter="addTask"
+    />
 
-    <v-list flat class="pt-0">
-        <transition-group type="transition" name="flip-list">
-          <!-- Looping for the tasks -->
-          <div class="sortable" v-for="(task, i) in tasks" :key="task.id">
-            <v-list-item :class="{ 'blue lighten-5': task.done }">
-              <div  style="display: flex; align-items: center">
-                <v-list-item-action  hide-details="auto" style="position: relative;top: 10px;">
-                  <v-checkbox v-if="handle != true" :input-value="task.done"></v-checkbox>
-                  <v-icon color="primary" class="handle" v-else>mdi-drag</v-icon>
-                </v-list-item-action>
+    <v-list
+      flat
+      class="pt-0"
+    >
+      <transition-group
+        type="transition"
+        name="flip-list"
+      >
+        <!-- Looping for the tasks -->
+        <div
+          v-for="(task, i) in tasks"
+          :key="task.id"
+          class="sortable"
+        >
+          <v-list-item :class="{ 'blue lighten-5': task.done }">
+            <div style="display: flex; align-items: center">
+              <v-list-item-action
+                hide-details="auto"
+                style="position: relative;top: 10px;"
+              >
+                <v-checkbox
+                  v-if="handle != true"
+                  :input-value="task.done"
+                />
+                <v-icon
+                  v-else
+                  color="primary"
+                  class="handle"
+                >
+                  mdi-drag
+                </v-icon>
+              </v-list-item-action>
 
-                <v-list-item style="width: 90%">
-                  <v-list-item-title :class="{ 'text-decoration-line-through': task.done }">{{ task.title }}</v-list-item-title>
-                </v-list-item>
+              <v-list-item style="width: 90%">
+                <v-list-item-title :class="{ 'text-decoration-line-through': task.done }">
+                  {{ task.title }}
+                </v-list-item-title>
+              </v-list-item>
 
-                <v-list-item v-if="task.dueDate" class="text-right text-uppercase">
-                  <v-list-item-title class="caption">
-                    <v-icon v-if="!task.expired || task.done" dense class="mr-1">mdi-calendar-outline</v-icon>
-                    <v-icon v-else-if="!task.done && task.expired" dense class="mr-1 error--text">mdi-calendar-alert</v-icon>
-                    <span :class="{ 'error--text font-weight-bold': task.expired && !task.done }"> {{ computedDue(task.dueDate) }}</span>
-                  </v-list-item-title>
-                </v-list-item>
-                <v-btn text color="primary" @click="deleteTask(task.id)" style="position: absolute;right: 0;">Delete</v-btn>
-              </div>
-            </v-list-item>
-            <v-divider></v-divider>
-            <v-dialog ref="dialog" v-if="dialog === 0" v-model="task.modal" persistent width="290px">
-              <v-card>
-                <v-card-title>Edit task</v-card-title>
-                <v-text-field v-model="task.title" @keyup.enter="saveTask($refs, i, task.title, 'Task updated!')" class="pa-5"></v-text-field>
-                <v-btn text color="primary" @click.stop="task.modal = false">Cancel</v-btn>
-                <v-btn text color="primary" @click.stop="saveTask($refs, i, task.title, 'Task updated!')">Save</v-btn>
-              </v-card>
-            </v-dialog>
-          </div>
-        </transition-group>
+              <v-list-item
+                v-if="task.dueDate"
+                class="text-right text-uppercase"
+              >
+                <v-list-item-title class="caption">
+                  <v-icon
+                    v-if="!task.expired || task.done"
+                    dense
+                    class="mr-1"
+                  >
+                    mdi-calendar-outline
+                  </v-icon>
+                  <v-icon
+                    v-else-if="!task.done && task.expired"
+                    dense
+                    class="mr-1 error--text"
+                  >
+                    mdi-calendar-alert
+                  </v-icon>
+                  <span :class="{ 'error--text font-weight-bold': task.expired && !task.done }"> {{ computedDue(task.dueDate) }}</span>
+                </v-list-item-title>
+              </v-list-item>
+              <v-btn
+                text
+                color="primary"
+                style="position: absolute;right: 0;"
+                @click="deleteTask(task.id)"
+              >
+                Delete
+              </v-btn>
+            </div>
+          </v-list-item>
+          <v-divider />
+          <v-dialog
+            v-if="dialog === 0"
+            ref="dialog"
+            v-model="task.modal"
+            persistent
+            width="290px"
+          >
+            <v-card>
+              <v-card-title>Edit task</v-card-title>
+              <v-text-field
+                v-model="task.title"
+                class="pa-5"
+                @keyup.enter="saveTask($refs, i, task.title, 'Task updated!')"
+              />
+              <v-btn
+                text
+                color="primary"
+                @click.stop="task.modal = false"
+              >
+                Cancel
+              </v-btn>
+              <v-btn
+                text
+                color="primary"
+                @click.stop="saveTask($refs, i, task.title, 'Task updated!')"
+              >
+                Save
+              </v-btn>
+            </v-card>
+          </v-dialog>
+        </div>
+      </transition-group>
     </v-list>
 
-    <div v-if="tasks.length === 0" class="my-auto text-center green--text">
-      <v-icon x-large class="green--text">mdi-check-all</v-icon>
+    <div
+      v-if="tasks.length === 0"
+      class="my-auto text-center green--text"
+    >
+      <v-icon
+        x-large
+        class="green--text"
+      >
+        mdi-check-all
+      </v-icon>
       <h1>No tasks</h1>
     </div>
 
     <v-snackbar v-model="snackbar.active">
       {{ snackbar.text }}
 
-      <template v-slot:action="{ attrs }">
-        <v-btn color="pink" text v-bind="attrs" @click="snackbar.active = false"> Close </v-btn>
+      <template #action="{ attrs }">
+        <v-btn
+          color="pink"
+          text
+          v-bind="attrs"
+          @click="snackbar.active = false"
+        >
+          Close
+        </v-btn>
       </template>
     </v-snackbar>
 
-    <div class="handle-div text-center" v-if="handle">
-      <v-btn fixed bottom close color="primary" @click="handle = false"> Done sorting </v-btn>
+    <div
+      v-if="handle"
+      class="handle-div text-center"
+    >
+      <v-btn
+        fixed
+        bottom
+        close
+        color="primary"
+        @click="handle = false"
+      >
+        Done sorting
+      </v-btn>
     </div>
   </div>
 </template>
