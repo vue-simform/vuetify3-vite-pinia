@@ -105,3 +105,6 @@ pnpm lint
 ### Customize configuration
 
 See [Configuration Reference](https://vitejs.dev/config/).
+
+### Author
+Trishant Kumar (trishant.k@simformsolutions.com)
